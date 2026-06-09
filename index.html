@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AetherGallery - A premium, interactive image gallery showcasing beautiful, state-of-the-art photography and artwork.">
+  <title>AetherGallery | Premium Visual Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo-container" id="navLogo">
+        <div class="logo-icon">Æ</div>
+        <span class="logo-text">AetherGallery</span>
+      </a>
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button class="btn-icon" id="themeToggle" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
+          <!-- Light Mode Icon (Sun) -->
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <!-- Dark Mode Icon (Moon) -->
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6.8 6.8 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+        <!-- Add Image Button -->
+        <button class="btn-primary" id="openUploadBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5v14"/></svg>
+          Add Image
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-background">
+      <div class="hero-glow-1"></div>
+      <div class="hero-glow-2"></div>
+    </div>
+    <span class="hero-badge">Exquisite Visuals</span>
+    <h1>Explore the Art of <span>Visual Discovery</span></h1>
+    <p>A handpicked selection of stunning photography and high-fidelity scenery. Filter, search, and curate your visual inspiration in real-time.</p>
+  </section>
+
+  <!-- Filters & Search Controls -->
+  <div class="controls-container">
+    <!-- Search -->
+    <div class="search-bar-wrapper">
+      <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" id="searchInput" class="search-input" placeholder="Search gallery by title, tag or author...">
+    </div>
+
+    <!-- Category Filters -->
+    <div class="filters-wrapper" id="filtersWrapper">
+      <button class="filter-btn active" data-category="all">All Masterpieces</button>
+      <button class="filter-btn" data-category="Nature">Nature</button>
+      <button class="filter-btn" data-category="Space">Space</button>
+      <button class="filter-btn" data-category="Cyberpunk">Cyberpunk</button>
+      <button class="filter-btn" data-category="Architecture">Architecture</button>
+    </div>
+  </div>
+
+  <!-- Gallery Grid -->
+  <main class="gallery-container">
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Image cards will be injected here via JavaScript -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <a href="#" class="logo-container">
+        <div class="logo-icon">Æ</div>
+        <span class="logo-text">AetherGallery</span>
+      </a>
+      <p class="footer-text">&copy; 2026 AetherGallery. Developed with absolute precision and premium design guidelines.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close Lightbox">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous Image">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <div class="lightbox-content">
+      <img src="" alt="" class="lightbox-img" id="lightboxImg">
+      <div class="lightbox-caption">
+        <h2 class="lightbox-title" id="lightboxTitle"></h2>
+        <p class="lightbox-meta" id="lightboxMeta"></p>
+      </div>
+    </div>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next Image">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  <!-- Upload Modal -->
+  <div class="modal-overlay" id="uploadModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 class="modal-title">Add New Creation</h2>
+        <button class="btn-icon" id="closeUploadBtn" aria-label="Close Upload Form">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <form id="uploadForm">
+        <div class="drag-area" id="dragArea">
+          <div class="drag-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+          </div>
+          <p>Drag & Drop Image or Click to Browse</p>
+          <span style="font-size: 0.8rem; color: var(--text-muted)">Supports PNG, JPG, JPEG</span>
+          <input type="file" id="fileInput" accept="image/*" style="display: none;">
+        </div>
+
+        <div class="form-group">
+          <label for="imgTitle" class="form-label">Title</label>
+          <input type="text" id="imgTitle" class="form-input" placeholder="e.g. Neon Horizon" required>
+        </div>
+
+        <div class="form-group">
+          <label for="imgAuthor" class="form-label">Author Name</label>
+          <input type="text" id="imgAuthor" class="form-input" placeholder="e.g. Kai Sterling" required>
+        </div>
+
+        <div class="form-group">
+          <label for="imgCategory" class="form-label">Category</label>
+          <select id="imgCategory" class="form-input" style="appearance: auto;" required>
+            <option value="Nature">Nature</option>
+            <option value="Space">Space</option>
+            <option value="Cyberpunk">Cyberpunk</option>
+            <option value="Architecture">Architecture</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-secondary" id="cancelUploadBtn">Cancel</button>
+          <button type="submit" class="btn-primary" style="flex: 1; justify-content: center;">Publish Design</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
